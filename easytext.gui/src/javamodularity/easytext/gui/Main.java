@@ -1,13 +1,12 @@
 package javamodularity.easytext.gui;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javamodularity.easytext.algorithm.coleman.guice.ColemanModule;
-import javamodularity.easytext.algorithm.kincaid.guice.KincaidModule;
-import javamodularity.easytext.algorithm.naivesyllablecounter.guice.NaiveSyllableCounterModule;
-import javamodularity.easytext.algorithm.nextgensyllablecounter.guice.NextgenSyllableCounterModule;
+
+import java.util.ServiceLoader;
 
 public class Main extends Application {
     @Override
@@ -16,10 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("EasyText");
 
         Injector injector = Guice.createInjector(
-                new ColemanModule(),
-                new KincaidModule(),
-                new NextgenSyllableCounterModule(),
-                new NaiveSyllableCounterModule());
+                ServiceLoader.load(AbstractModule.class));
 
         EasyTextUI eas = injector.getInstance(EasyTextUI.class);
 

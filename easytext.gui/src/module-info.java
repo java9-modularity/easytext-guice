@@ -6,11 +6,13 @@ module easytext.gui {
     requires javafx.controls;
     requires easytext.algorithm.api;
     requires guice;
-    requires easytext.algorithm.kincaid;
-    requires easytext.algorithm.coleman;
+   // requires easytext.algorithm.kincaid;
+   // requires easytext.algorithm.coleman;
     requires javafx.fxml;
-    requires easytext.algorithm.naivesyllablecounter;
-    requires easytext.algorithm.nextgensyllablecounter;
+    //requires easytext.algorithm.naivesyllablecounter;
+    //requires easytext.algorithm.nextgensyllablecounter;
+
+    uses com.google.inject.AbstractModule;
 
     opens javamodularity.easytext.gui;
 
